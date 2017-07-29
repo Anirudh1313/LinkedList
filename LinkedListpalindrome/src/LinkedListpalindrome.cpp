@@ -18,11 +18,11 @@ int main()
 
 	LinkedList l1, l2;
 	l1.clear1();
-//	l1.addvalue_sorted(10);
-//	l1.addvalue_sorted(2);
-	l1.print();
+	l2.clear1();
+
 	string in;
 	int f = 0;
+	cout << "Enter a list of integers: ";
 	while(in[0] != '.')
 	{
 		if(f == 1)
@@ -41,33 +41,43 @@ int main()
 		f = 1;
 		cin >> in;
 	}
-	Node *ptr = l1.get_head();
+	//setting up a linkedlist while giving input values!
+
+// ALGORITHM-1: REVERSING THE WHOLE LIST AND EQUATING BOTH THE LISTS, IF EQUAL ITS A PLAINDROME
+//	Node *ptr = l1.get_head();
 	Node *ptr2 = l2.get_head();
 
-	Node *mid = middle(ptr2);
-
-	Node *p = reverse(mid);
-
-	l1.print();
-	l1.firsthalf();
-	cout << "l1 half: ";
 	l1.print();
 
-    l2.set_head(p);
-    l2.print();
+	Node *p = reverse(ptr2); //reversing the node's starting from the input node.
+	
+	
+/* AGORITHM-2: FINDING THE MIDDLE ELEMENT &  REVERSING THE SECOND HALF OF THE LIST AND EQUATING 
+ *THE FIRSTHALF AND THE SECOND HALF OF THE REVERSED LIST.
+ */
+//	Node *mid = middle(ptr2); //finding the middle node of the list
+//
+//	Node *p = reverse(mid); //reversing the node's starting from the input node.
+//
+//	l1.print();
+//	l1.firsthalf(); //making the list to half the size!
+//
+//	cout << "l1 half: ";
+//	l1.print();
+//      l2.set_head(p);
+	
+    l2.set_head(p); //setting the list to the reversed list head
+	
+    cout << "list after reversing: "; l2.print();
 
     if(l1 == l2)
     {
-    	cout <<"Yes! the list you entered is a Palindrome" << endl;
+    	cout << "Yes! the list you entered is a Palindrome" << endl;
     }
     else
     {
-    	cout <<"No! the list you entered is not a Palindrome" << endl;
+    	cout << "No! the list you entered is not a Palindrome" << endl;
     }
-
-    LinkedList l3(ptr);
-	l3.print();
-
 
 	return 0;
 }
@@ -97,7 +107,7 @@ Node* reverse(Node* ptr)
     	current = next;
 
     }
-
+	
     ptr = prev;
     return ptr;
 
